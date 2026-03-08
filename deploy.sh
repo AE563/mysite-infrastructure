@@ -2,7 +2,7 @@
 set -e
 
 REMOTE=landvps
-REMOTE_DIR=~/mysite-infrastructure
+REMOTE_DIR='~/mysite-infrastructure'
 
 # Warn if uncommitted changes exist — they won't be deployed
 if ! git diff --quiet || ! git diff --cached --quiet; then
