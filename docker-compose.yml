@@ -9,8 +9,11 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    # The config dir is mounted, not the single file: git pull replaces nginx.conf
+    # with a new inode, and a file bind mount would keep showing the old one
+    command: ["nginx", "-c", "/etc/nginx/conf/nginx.conf", "-g", "daemon off;"]
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx:/etc/nginx/conf:ro
       - ./certs:/etc/nginx/certs:ro
       # Let's Encrypt: certs live here, ACME challenges are written here by certbot
       - ./certbot/conf:/etc/letsencrypt:ro
