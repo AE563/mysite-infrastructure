@@ -8,4 +8,5 @@ set -e
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-SQL
     CREATE DATABASE groceries_db;
     CREATE DATABASE gw2tp_db;
+    CREATE DATABASE trainer_db;
 SQL
